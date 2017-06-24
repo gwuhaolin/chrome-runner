@@ -1,0 +1,21 @@
+{
+  "name": "chrome-runner",
+  "description": "chrome runner",
+  "keywords": [
+    "chrome",
+    "runner"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "version": "1.0.0",
+  "author": "gwuhaolin",
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.6.1"
+  },
+  "devDependencies": {
+    "mocha": "^3.4.2"
+  }
+}
