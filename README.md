@@ -3,7 +3,7 @@
 # Chrome Runner
 Run Google Chrome with ease from node.
 
-* [Disables many Chrome services](https://github.com/gwuhaolin/chrome-runner/flags.js) that add noise to automated scenarios
+* [Disables many Chrome services](https://github.com/gwuhaolin/chrome-runner/blob/master/flags.js) that add noise to automated scenarios
 * Opens up the browser's `remote-debugging-port` on an available port
 * Automagically locates a Chrome binary to launch
 * Uses a fresh Chrome profile for each launch, and cleans itself up on `kill()`
@@ -18,7 +18,7 @@ const Runner = require('chrome-runner');
 const runner = new Runner({
   // (optional) Additional flags to pass to Chrome, for example: ['--headless', '--disable-gpu']
   // See all flags here: http://peter.sh/experiments/chromium-command-line-switches/
-  // Do note, many flags are set by default: https://github.com/gwuhaolin/chrome-runner/flags.js
+  // Do note, many flags are set by default: https://github.com/gwuhaolin/chrome-runner/blob/master/flags.js
   chromeFlags: Array<string>,
 
   // (optional) Explicit path of intended Chrome binary
