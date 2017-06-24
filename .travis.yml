@@ -1,7 +1,9 @@
 language: node_js
+node_js:
+  - "7"
 install:
   - npm i
+addons:
+  chrome: stable
 before_script:
   - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - curl -L https://raw.githubusercontent.com/GoogleChrome/lighthouse/v2.1.0/lighthouse-core/scripts/download-chrome.sh | bash
