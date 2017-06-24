@@ -9,7 +9,7 @@
   "scripts": {
     "test": "mocha test"
   },
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "gwuhaolin",
   "dependencies": {
     "mkdirp": "^0.5.1",
