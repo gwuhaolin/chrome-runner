@@ -5,5 +5,3 @@ install:
   - npm i
 addons:
   chrome: stable
-before_script:
-  - export DISPLAY=:99.0
