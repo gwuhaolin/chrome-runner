@@ -16,6 +16,8 @@ const Runner = require('chrome-runner');
 
 // chrome runner, a runner will launch a chrome
 const runner = new Runner({
+  // chrome remote debugging port
+  port: number,
   // (optional) Additional flags to pass to Chrome, for example: ['--headless', '--disable-gpu']
   // See all flags here: http://peter.sh/experiments/chromium-command-line-switches/
   // Do note, many flags are set by default: https://github.com/gwuhaolin/chrome-runner/blob/master/flags.js

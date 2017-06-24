@@ -16,7 +16,6 @@ const SUPPORTED_PLATFORMS = new Set(['darwin', 'linux', 'win32']);
 class Runner {
   constructor(opts = {}) {
     this.tmpDirandPidFileReady = false;
-    this.port = undefined;
     this.chrome = undefined;
     this.chromeDataDir = undefined;
     this.chromeOutFile = undefined;
@@ -24,6 +23,7 @@ class Runner {
     this.pidFile = undefined;
     this.restartUnexpectedChrome = true;
 
+    this.port = opts.port;
     this.chromePath = opts.chromePath;
     this.chromeFlags = opts.chromeFlags || [];
   }
@@ -33,7 +33,7 @@ class Runner {
       try {
         return await this.isDebugReady();
       } catch (err) {
-        console.log('ChromeRunner', `No debugging port found on port ${this.port}, launching a new Chrome.`);
+        console.log('ChromeRunner', `No chrome found on port ${this.port}, launching a new Chrome.`);
       }
     }
 
