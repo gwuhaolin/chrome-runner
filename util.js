@@ -14,7 +14,7 @@ function makeWin32TmpDir() {
   const winTmpPath = process.env.TEMP || process.env.TMP ||
     (process.env.SystemRoot || process.env.windir) + '\\temp';
   const randomNumber = Math.floor(Math.random() * 9e7 + 1e7);
-  const tmpdir = join(winTmpPath, 'chrome_runner.' + randomNumber);
+  const tmpdir = join(winTmpPath, 'chrome_runner.XXXXXXX' + randomNumber);
 
   mkdirp.sync(tmpdir);
   return tmpdir;
