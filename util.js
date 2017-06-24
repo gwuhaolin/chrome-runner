@@ -7,14 +7,14 @@ const mkdirp = require('mkdirp');
 
 
 function makeUnixTmpDir() {
-  return execSync('mktemp -d -t chrome_runner').toString().trim();
+  return execSync('mktemp -d -t chrome_runner.XXXXXXX').toString().trim();
 }
 
 function makeWin32TmpDir() {
   const winTmpPath = process.env.TEMP || process.env.TMP ||
     (process.env.SystemRoot || process.env.windir) + '\\temp';
   const randomNumber = Math.floor(Math.random() * 9e7 + 1e7);
-  const tmpdir = join(winTmpPath, 'chrome_runner.XXXXXXX' + randomNumber);
+  const tmpdir = join(winTmpPath, 'chrome_runner.' + randomNumber);
 
   mkdirp.sync(tmpdir);
   return tmpdir;
