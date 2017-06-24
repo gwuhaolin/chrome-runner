@@ -1,6 +1,6 @@
-# Chrome Runner
 [![NPM](https://nodei.co/npm/chrome-runner.png)](https://nodei.co/npm/chrome-runner/)
 
+# Chrome Runner
 Run Google Chrome with ease from node.
 
 * [Disables many Chrome services](https://github.com/gwuhaolin/chrome-runner/flags.js) that add noise to automated scenarios
@@ -9,11 +9,6 @@ Run Google Chrome with ease from node.
 * Uses a fresh Chrome profile for each launch, and cleans itself up on `kill()`
 * Binds `Ctrl-C` (by default) to terminate the Chrome process
 * handle chrome unexpected exit and restart it
-
-### Installing
-```sh
-npm install chrome-runner
-```
 
 ## Use
 ```js
