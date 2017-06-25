@@ -8,7 +8,12 @@ process.on('unhandledRejection', console.trace);
 describe('Runner', function () {
 
   it('launch() then kill()', async function () {
-    const runner = new Runner();
+    const runner = new Runner({
+      chromeFlags: [
+        '--headless',
+        '--disable-gpu',
+      ]
+    });
     await runner.launch();
     assert.notEqual(runner.chromeProcess, null);
     return await runner.kill();
@@ -16,7 +21,12 @@ describe('Runner', function () {
 
   it('restart chrome when chrome exit unexpected', async function () {
     this.timeout(5000);
-    const runner = new Runner();
+    const runner = new Runner({
+      chromeFlags: [
+        '--headless',
+        '--disable-gpu',
+      ]
+    });
     await runner.launch();
     process.kill(runner.chromeProcess.pid);
     await delay(1000);
