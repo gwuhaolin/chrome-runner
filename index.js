@@ -138,7 +138,6 @@ class Runner {
     global.logger.info(`chrome running with pid ${chromeProcess.pid} on port ${this.port}.`);
 
     await this.waitUntilReady();
-    return chromeProcess.pid;
   }
 
   handleSIGINT() {
@@ -152,9 +151,9 @@ class Runner {
     if (this.chromeProcess) {
       this.chromeProcess.on('close', async () => {
         if (this.restartUnexpectedChrome) {
-          global.logger.warn('chrome exit unexpected, restart it');
           delete this.chromeProcess;
           setTimeout(this.spawn.bind(this), 1000);
+          global.logger.warn('chrome exit unexpected, restart it');
         }
       })
     }
