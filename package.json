@@ -1,16 +1,21 @@
 {
   "name": "chrome-runner",
-  "description": "chrome runner",
+  "version": "1.0.4",
+  "description": "headless chrome runner launcher",
   "keywords": [
+    "headless",
     "chrome",
-    "runner"
+    "runner",
+    "launcher"
   ],
   "main": "index.js",
   "scripts": {
     "test": "mocha test"
   },
-  "version": "1.0.3",
   "author": "gwuhaolin",
+  "engines": {
+    "node": ">= 7.0.0"
+  },
   "dependencies": {
     "mkdirp": "^0.5.1",
     "rimraf": "^2.6.1"
