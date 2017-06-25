@@ -1,7 +1,5 @@
 language: node_js
 node_js:
   - "7"
-install:
-  - npm i
 addons:
-  chrome: stable
+  chrome: beta

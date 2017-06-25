@@ -135,7 +135,7 @@ function linux() {
     }
   });
 
-  if (!installations.length) {
+  if (installations.length===0) {
     throw new Error(`The environment variable CHROME_PATH must be set to executable of a build of Chromium version 54.0 or later.`);
   }
 
