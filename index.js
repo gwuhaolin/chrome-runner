@@ -154,7 +154,7 @@ class Runner {
         if (this.restartUnexpectedChrome) {
           global.logger.warn('chrome exit unexpected, restart it');
           delete this.chromeProcess;
-          await this.spawn();
+          setTimeout(this.spawn.bind(this), 1000);
         }
       })
     }

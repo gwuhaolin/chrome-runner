@@ -126,17 +126,16 @@ function linux() {
     try {
       const chromePath =
         execFileSync('which', [executable]).toString().split(newLineRegex)[0];
-      global.logger.info(chromePath);
       if (canAccess(chromePath)) {
         installations.push(chromePath);
       }
-    } catch (e) {
-      global.logger.error(e);
+    } catch (err) {
+      global.logger.warn(`execFileSync error ${err}`);
       // Not installed.
     }
   });
 
-  if (installations.length===0) {
+  if (installations.length === 0) {
     throw new Error(`The environment variable CHROME_PATH must be set to executable of a build of Chromium version 54.0 or later.`);
   }
 
