@@ -126,11 +126,12 @@ function linux() {
     try {
       const chromePath =
         execFileSync('which', [executable]).toString().split(newLineRegex)[0];
-
+      global.logger.info(chromePath);
       if (canAccess(chromePath)) {
         installations.push(chromePath);
       }
     } catch (e) {
+      global.logger.error(e);
       // Not installed.
     }
   });
