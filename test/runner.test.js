@@ -20,7 +20,7 @@ describe('Runner', function () {
   });
 
   it('restart chrome when chrome exit unexpected', async function () {
-    this.timeout(5000);
+    this.timeout(8000);
     const runner = new Runner({
       chromeFlags: [
         '--headless',
@@ -29,11 +29,11 @@ describe('Runner', function () {
     });
     await runner.launch();
     process.kill(runner.chromeProcess.pid);
-    await delay(1000);
+    await delay(2000);
     process.kill(runner.chromeProcess.pid);
-    await delay(1000);
+    await delay(2000);
     process.kill(runner.chromeProcess.pid);
-    await delay(1000);
+    await delay(2000);
     await runner.kill();
   });
 
