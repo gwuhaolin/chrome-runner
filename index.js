@@ -47,16 +47,10 @@ class Runner {
 
     if (!this.chromePath) {
       const installations = await chromeFinder[process.platform]();
-      let chromePath;
       if (installations.length > 0) {
-        chromePath = installations[0];
-      } else if (process.env['CHROME_PATH']) {
-        chromePath = process.env['CHROME_PATH'];
-      }
-      if (chromePath) {
-        this.chromePath = chromePath;
+        this.chromePath = installations[0];
       } else {
-        throw new Error('no chrome installations found, if you has install chrome set env CHROME_PATH to your chrome exe path');
+        throw new Error('no chrome installations found');
       }
     }
 

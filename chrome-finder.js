@@ -96,16 +96,16 @@ function darwin() {
 
 /**
  * Look for linux executables in 3 ways
- * 1. Look into LIGHTHOUSE_CHROMIUM_PATH env variable
+ * 1. Look into CHROME_PATH env variable
  * 2. Look into the directories where .desktop are saved on gnome based distro's
  * 3. Look for google-chrome-stable & google-chrome executables by using the which command
  */
 function linux() {
   let installations = [];
 
-  // 1. Look into LIGHTHOUSE_CHROMIUM_PATH env variable
-  if (canAccess(process.env.LIGHTHOUSE_CHROMIUM_PATH)) {
-    installations.push(process.env.LIGHTHOUSE_CHROMIUM_PATH);
+  // 1. Look into CHROME_PATH env variable
+  if (canAccess(process.env.CHROME_PATH)) {
+    installations.push(process.env.CHROME_PATH);
   }
 
   // 2. Look into the directories where .desktop are saved on gnome based distro's
@@ -136,15 +136,13 @@ function linux() {
   });
 
   if (!installations.length) {
-    throw new Error(
-      'The environment variable LIGHTHOUSE_CHROMIUM_PATH must be set to ' +
-      'executable of a build of Chromium version 54.0 or later.');
+    throw new Error(`The environment variable CHROME_PATH must be set to executable of a build of Chromium version 54.0 or later.`);
   }
 
   const priorities = [
     { regex: /chrome-wrapper$/, weight: 51 }, { regex: /google-chrome-stable$/, weight: 50 },
     { regex: /google-chrome$/, weight: 49 },
-    { regex: new RegExp(process.env.LIGHTHOUSE_CHROMIUM_PATH), weight: 100 }
+    { regex: new RegExp(process.env.CHROME_PATH), weight: 100 }
   ];
 
   return sort(Array.from(new Set(installations.filter(Boolean))), priorities);
@@ -158,8 +156,8 @@ function win32() {
   const prefixes =
     [process.env.LOCALAPPDATA, process.env.PROGRAMFILES, process.env['PROGRAMFILES(X86)']];
 
-  if (canAccess(process.env.LIGHTHOUSE_CHROMIUM_PATH)) {
-    installations.push(process.env.LIGHTHOUSE_CHROMIUM_PATH);
+  if (canAccess(process.env.CHROME_PATH)) {
+    installations.push(process.env.CHROME_PATH);
   }
 
   prefixes.forEach(prefix => suffixes.forEach(suffix => {
