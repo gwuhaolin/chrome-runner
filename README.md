@@ -1,8 +1,8 @@
-[![NPM](https://nodei.co/npm/chrome-runner.png)](https://nodei.co/npm/chrome-runner/)
-
 [![Build Status](https://travis-ci.org/gwuhaolin/chrome-runner.svg?branch=master)](https://travis-ci.org/gwuhaolin/chrome-runner)
 [![Dependency Status](https://david-dm.org/gwuhaolin/chrome-runner.svg?style=flat-square)](https://npmjs.org/package/chrome-runner)
 [![Npm Downloads](http://img.shields.io/npm/dm/chrome-runner.svg?style=flat-square)](https://www.npmjs.com/package/chrome-runner)
+
+[![NPM](https://nodei.co/npm/chrome-runner.png)](https://nodei.co/npm/chrome-runner/)
 
 # Chrome Runner 
 Run Google Chrome with ease from node.
