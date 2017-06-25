@@ -1,6 +1,10 @@
 [![NPM](https://nodei.co/npm/chrome-runner.png)](https://nodei.co/npm/chrome-runner/)
 
-# Chrome Runner
+[![Build Status](https://travis-ci.org/gwuhaolin/chrome-runner.svg?branch=master)](https://travis-ci.org/gwuhaolin/chrome-runner)
+[![Dependency Status](https://david-dm.org/gwuhaolin/chrome-runner.svg?style=flat-square)](https://npmjs.org/package/chrome-runner)
+[![Npm Downloads](http://img.shields.io/npm/dm/chrome-runner.svg?style=flat-square)](https://www.npmjs.com/package/chrome-runner)
+
+# Chrome Runner 
 Run Google Chrome with ease from node.
 
 * [Disables many Chrome services](https://github.com/gwuhaolin/chrome-runner/blob/master/flags.js) that add noise to automated scenarios
