@@ -3,15 +3,16 @@
 [![Dependency Status](https://david-dm.org/gwuhaolin/chrome-runner.svg?style=flat-square)](https://npmjs.org/package/chrome-runner)
 [![Npm Downloads](http://img.shields.io/npm/dm/chrome-runner.svg?style=flat-square)](https://www.npmjs.com/package/chrome-runner)
 
-# Chrome Runner 
-Run Google Chrome with ease from node.
+# chrome-runner 
+Run chrome with ease from node.
 
-* [Disables many Chrome services](https://github.com/gwuhaolin/chrome-runner/blob/master/flags.js) that add noise to automated scenarios
-* Opens up the browser's `remote-debugging-port` on an available port
-* Automagically locates a Chrome binary to launch
-* Uses a fresh Chrome profile for each launch, and cleans itself up on `kill()`
-* Binds `Ctrl-C` (by default) to terminate the Chrome process
-* handle chrome unexpected exit and restart it
+- Support OSX Linux Windows system
+- Handle chrome unexpected exit and restart it
+- [Disables many Chrome services](https://github.com/gwuhaolin/chrome-runner/blob/master/flags.js) that add noise to automated scenarios
+- Opens up the browser's `remote-debugging-port` on an available port
+- Automagically locates a Chrome binary to launch
+- Uses a fresh Chrome profile for each launch, and cleans itself up on `kill()`
+- Binds `Ctrl-C` (by default) to terminate the Chrome process
 
 ## Use
 ```js
