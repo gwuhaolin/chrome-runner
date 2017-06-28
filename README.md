@@ -41,3 +41,12 @@ runner.port;
 // kill this chrome
 await runner.kill();
 ```
+
+after chrome-runner launch chrome, a dir hold chrome out log and pid file will be create, this dir path will be out in console.
+
+## Install chrome on linux server
+chrome-runner required chrome installed on your system, it easy to install on OSX and Windows, Let me tell you how to install on linux server:
+1. download chrome by run `wget https://download-chromium.appspot.com/dl/Linux_x64?type=snapshots`
+2. unzip chrome.zip by `unzip chrome.zip`
+3. chrome executable file is `./chrome/chrome`, add dir `./chrome` to your env path
+4. notice run chrome in linux server require chrome with flags `['--headless', '--disable-gpu']`, Otherwise some error will occur
