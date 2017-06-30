@@ -3,7 +3,7 @@ const fs = require('fs');
 const childProcess = require('child_process');
 const rimraf = require('rimraf');
 const chromeFinder = require('./chrome-finder');
-const DEFAULT_FLAGS = require('./flags');
+const { DEFAULT_FLAGS, NOISE_FLAGS } = require('./flags');
 const { getRandomPort, makeTmpDir, delay, isPortOpen } = require('./util');
 
 if (!global.logger) {
@@ -14,11 +14,20 @@ const { spawn, execSync } = childProcess;
 const isWindows = process.platform === 'win32';
 const SUPPORTED_PLATFORMS = new Set(['darwin', 'linux', 'win32']);
 
-/**
- * chrome runner, a runner will launch a chrome
- */
 class Runner {
+
+  /**
+   * a Runner to launch a chrome
+   * @param opts
+   * opts.port: {number} launch chrome listen on debug port, default will random a free port to use
+   * opts.chromePath: {string} chrome executable full path, default will automatic find a path according to your system. If no executable chrome find, will use env CHROME_PATH as executable full path. If all of the above way can't get a path a Error('no chrome installations found') will throw
+   * opts.chromeFlags: {Array<string>} flags pass to chrome when start chrome, all flags can be find [here](http://peter.sh/experiments/chromium-command-line-switches/)
+   */
   constructor(opts = {}) {
+    this.port = opts.port;
+    this.chromePath = opts.chromePath;
+    this.chromeFlags = opts.chromeFlags || [];
+
     this.tmpDirandPidFileReady = false;
     this.chromeProcess = undefined;
     this.chromeDataDir = undefined;
@@ -26,10 +35,6 @@ class Runner {
     this.chromeErrorFile = undefined;
     this.pidFile = undefined;
     this.restartUnexpectedChrome = true;
-
-    this.port = opts.port;
-    this.chromePath = opts.chromePath;
-    this.chromeFlags = opts.chromeFlags || [];
   }
 
   async launch() {
@@ -200,4 +205,33 @@ class Runner {
   }
 }
 
-module.exports = Runner;
+async function launch(runnerOptions) {
+  const runner = new Runner(runnerOptions);
+  await runner.launch();
+  return runner;
+}
+
+async function launchWithoutNoise(runnerOptions) {
+  const runner = new Runner(runnerOptions);
+  await runner.launch(Object.assign({
+    chromeFlags: NOISE_FLAGS,
+  }, runnerOptions));
+  return runner;
+}
+
+async function launchWithHeadless(runnerOptions) {
+  const runner = new Runner(runnerOptions);
+  await runner.launch(Object.assign({
+    chromeFlags: NOISE_FLAGS.concat([
+      '--headless',
+      '--disable-gpu'
+    ]),
+  }, runnerOptions));
+  return runner;
+}
+
+module.exports = {
+  launch,
+  launchWithoutNoise,
+  launchWithHeadless
+};

@@ -8,18 +8,17 @@ Run chrome with ease from node.
 
 - Support OSX Linux Windows system
 - Handle chrome unexpected exit and restart it
-- [Disables many Chrome services](https://github.com/gwuhaolin/chrome-runner/blob/master/flags.js) that add noise to automated scenarios
 - Opens up the browser's `remote-debugging-port` on an available port
-- Automagically locates a Chrome binary to launch
+- Automatic locates a Chrome binary to launch
 - Uses a fresh Chrome profile for each launch, and cleans itself up on `kill()`
-- Binds `Ctrl-C` (by default) to terminate the Chrome process
+- Binds `Ctrl-C` to terminate the Chrome process
 
 ## Use
 ```js
-const Runner = require('chrome-runner');
+const {launch,launchWithoutNoise} = require('chrome-runner');
 
-// chrome runner, a runner will launch a chrome
-const runner = new Runner({
+// launch a chrome
+const runner = await launch({
   // chrome remote debugging port
   port: number,
   // (optional) Additional flags to pass to Chrome, for example: ['--headless', '--disable-gpu']
@@ -32,9 +31,6 @@ const runner = new Runner({
   chromePath: string,
 });
 
-// launch the chrome app
-await runner.launch();
-
 // read chrome remote debugging port
 runner.port;
 
@@ -42,7 +38,22 @@ runner.port;
 await runner.kill();
 ```
 
+#### support options
+- port: {number} launch chrome listen on debug port, default will random a free port to use
+- chromePath: {string} chrome executable full path, default will automatic find a path according to your system. If no executable chrome find, will use env CHROME_PATH as executable full path. If all of the above way can't get a path a Error('no chrome installations found') will throw
+- chromeFlags: {Array<string>} flags pass to chrome when start chrome, all flags can be find [here](http://peter.sh/experiments/chromium-command-line-switches/)
+
+#### runner API
+- runner.port: get chrome remove debug port
+- runner.kill(): kill chrome and release all resource and remove temp files
+
 after chrome-runner launch chrome, a dir hold chrome out log and pid file will be create, this dir path will be out in console.
+
+## launchWithoutNoise
+`launchWithoutNoise` same with `launch` but [disables many chrome services](https://github.com/gwuhaolin/chrome-runner/blob/master/flags.js) that add noise to automated scenarios.
+
+## launchWithHeadless
+`launchWithHeadless` same with `launch` but [run chrome in headless mode](https://developers.google.com/web/updates/2017/04/headless-chrome) and without noise.
 
 ## Install chrome on linux server
 chrome-runner required chrome installed on your system, it easy to install on OSX and Windows, Linux server see [How to install Chrome browser properly via command line?](https://askubuntu.com/questions/79280/how-to-install-chrome-browser-properly-via-command-line)
