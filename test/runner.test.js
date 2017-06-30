@@ -6,6 +6,7 @@ const { launch, launchWithoutNoise, launchWithHeadless } = require('../index');
 process.on('unhandledRejection', console.trace);
 
 describe('Runner', function () {
+  this.timeout(5000);
 
   it('launch() then kill()', async function () {
     const runner = await launch({
