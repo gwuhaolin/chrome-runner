@@ -45,3 +45,10 @@ after chrome-runner launch chrome, a dir hold chrome out log and pid file will b
 
 ## Install chrome on linux server
 chrome-runner required chrome installed on your system, it easy to install on OSX and Windows, Linux server see [How to install Chrome browser properly via command line?](https://askubuntu.com/questions/79280/how-to-install-chrome-browser-properly-via-command-line)
+
+## Use Case
+chrome-runner has been used in many project, e.g:
+- [chrome-render](https://github.com/gwuhaolin/chrome-render) general server render base on chrome
+- [chrome-pool](https://github.com/gwuhaolin/chrome-pool) headless chrome tabs manage pool
+- [koa-seo](https://github.com/gwuhaolin/koa-seo) SEO middleware for koa base on chrome-render, a substitute for prerender
+- [chrome-tester](https://github.com/gwuhaolin/chrome-tester) web page automatic tester
