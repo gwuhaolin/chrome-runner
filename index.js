@@ -22,11 +22,13 @@ class Runner {
    * opts.port: {number} launch chrome listen on debug port, default will random a free port to use
    * opts.chromePath: {string} chrome executable full path, default will automatic find a path according to your system. If no executable chrome find, will use env CHROME_PATH as executable full path. If all of the above way can't get a path a Error('no chrome installations found') will throw
    * opts.chromeFlags: {Array<string>} flags pass to chrome when start chrome, all flags can be find [here](http://peter.sh/experiments/chromium-command-line-switches/)
+   * opts.startupPage: {string} open page when chrome start, default is about:blank
    */
   constructor(opts) {
     this.port = opts.port;
     this.chromePath = opts.chromePath;
     this.chromeFlags = opts.chromeFlags || [];
+    this.startupPage = opts.startupPage || 'about:blank';
 
     this.tmpDirandPidFileReady = false;
     this.chromeProcess = undefined;
@@ -102,7 +104,7 @@ class Runner {
     }
 
     flags.push(...this.chromeFlags);
-    flags.push('about:blank');
+    flags.push(this.startupPage);
 
     return flags;
   }
