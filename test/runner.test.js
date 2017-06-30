@@ -6,10 +6,9 @@ const { launch, launchWithoutNoise, launchWithHeadless } = require('../index');
 process.on('unhandledRejection', console.trace);
 
 describe('Runner', function () {
-  this.timeout(5000);
 
-  it('launch() then kill()', async function () {
-    const runner = await launch({
+  it('set and get port', async function () {
+    const runner = await launchWithHeadless({
       port: 4577,
     });
     assert.notEqual(runner.chromeProcess, null);
@@ -17,21 +16,29 @@ describe('Runner', function () {
     return await runner.kill();
   });
 
-  it('launchWithoutNoise() then kill()', async function () {
+  it.skip('launch() then kill()', async function () {
+    const runner = await launch();
+    assert.notEqual(runner.chromeProcess, null);
+    return await runner.kill();
+  });
+
+  it.skip('launchWithoutNoise() then kill()', async function () {
     const runner = await launchWithoutNoise();
     assert.notEqual(runner.chromeProcess, null);
+    assert.notEqual(runner.port, null);
     return await runner.kill();
   });
 
   it('launchWithHeadless() then kill()', async function () {
     const runner = await launchWithHeadless();
     assert.notEqual(runner.chromeProcess, null);
+    assert.notEqual(runner.port, null);
     return await runner.kill();
   });
 
   it('restart chrome when chrome exit unexpected', async function () {
     this.timeout(8000);
-    const runner = await launch();
+    const runner = await launchWithHeadless();
     await runner.launch();
     process.kill(runner.chromeProcess.pid);
     await delay(2000);

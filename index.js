@@ -212,21 +212,21 @@ async function launch(runnerOptions) {
 }
 
 async function launchWithoutNoise(runnerOptions) {
-  const runner = new Runner(runnerOptions);
-  await runner.launch(Object.assign({
+  const runner = new Runner(Object.assign({
     chromeFlags: NOISE_FLAGS,
   }, runnerOptions));
+  await runner.launch();
   return runner;
 }
 
 async function launchWithHeadless(runnerOptions) {
-  const runner = new Runner(runnerOptions);
-  await runner.launch(Object.assign({
+  const runner = new Runner(Object.assign({
     chromeFlags: NOISE_FLAGS.concat([
       '--headless',
       '--disable-gpu'
     ]),
   }, runnerOptions));
+  await runner.launch();
   return runner;
 }
 
