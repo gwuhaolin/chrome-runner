@@ -15,7 +15,7 @@ Run chrome with ease from node.
 
 ## Use
 ```js
-const {launch,launchWithoutNoise} = require('chrome-runner');
+const {launch,launchWithoutNoise,launchWithHeadless} = require('chrome-runner');
 // launch a chrome
 const runner = await launch();
 // read chrome remote debugging port
@@ -37,10 +37,10 @@ await runner.kill();
 
 after chrome-runner launch chrome, a dir hold chrome out log and pid file will be create, this dir path will be out in console.
 
-## launchWithoutNoise
+#### launchWithoutNoise
 `launchWithoutNoise` same with `launch` but [disables many chrome services](https://github.com/gwuhaolin/chrome-runner/blob/master/lib/flags.js) that add noise to automated scenarios.
 
-## launchWithHeadless
+#### launchWithHeadless
 `launchWithHeadless` same with `launch` but [run chrome in headless mode](https://developers.google.com/web/updates/2017/04/headless-chrome) and without noise.
 
 ## Install chrome on linux server
