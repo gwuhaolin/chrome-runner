@@ -23,7 +23,7 @@ class Runner {
    * opts.chromePath: {string} chrome executable full path, default will automatic find a path according to your system. If no executable chrome find, will use env CHROME_PATH as executable full path. If all of the above way can't get a path a Error('no chrome installations found') will throw
    * opts.chromeFlags: {Array<string>} flags pass to chrome when start chrome, all flags can be find [here](http://peter.sh/experiments/chromium-command-line-switches/)
    */
-  constructor(opts = {}) {
+  constructor(opts) {
     this.port = opts.port;
     this.chromePath = opts.chromePath;
     this.chromeFlags = opts.chromeFlags || [];
@@ -205,26 +205,34 @@ class Runner {
   }
 }
 
-async function launch(runnerOptions) {
+async function launch(runnerOptions = {}) {
   const runner = new Runner(runnerOptions);
   await runner.launch();
   return runner;
 }
 
-async function launchWithoutNoise(runnerOptions) {
+async function launchWithoutNoise(runnerOptions = {}) {
+  let chromeFlags = NOISE_FLAGS;
+  if (Array.isArray(runnerOptions.chromeFlags)) {
+    chromeFlags = chromeFlags.concat(runnerOptions.chromeFlags);
+  }
   const runner = new Runner(Object.assign({
-    chromeFlags: NOISE_FLAGS,
+    chromeFlags,
   }, runnerOptions));
   await runner.launch();
   return runner;
 }
 
-async function launchWithHeadless(runnerOptions) {
+async function launchWithHeadless(runnerOptions = {}) {
+  let chromeFlags = NOISE_FLAGS.concat([
+    '--headless',
+    '--disable-gpu'
+  ]);
+  if (Array.isArray(runnerOptions.chromeFlags)) {
+    chromeFlags = chromeFlags.concat(runnerOptions.chromeFlags);
+  }
   const runner = new Runner(Object.assign({
-    chromeFlags: NOISE_FLAGS.concat([
-      '--headless',
-      '--disable-gpu'
-    ]),
+    chromeFlags,
   }, runnerOptions));
   await runner.launch();
   return runner;

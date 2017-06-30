@@ -16,36 +16,23 @@ Run chrome with ease from node.
 ## Use
 ```js
 const {launch,launchWithoutNoise} = require('chrome-runner');
-
 // launch a chrome
-const runner = await launch({
-  // chrome remote debugging port
-  port: number,
-  // (optional) Additional flags to pass to Chrome, for example: ['--headless', '--disable-gpu']
-  // See all flags here: http://peter.sh/experiments/chromium-command-line-switches/
-  // Do note, many flags are set by default: https://github.com/gwuhaolin/chrome-runner/blob/master/flags.js
-  chromeFlags: Array<string>,
-
-  // (optional) Explicit path of intended Chrome binary
-  // By default, any detected Chrome Canary or Chrome (stable) will be launched
-  chromePath: string,
-});
-
+const runner = await launch();
 // read chrome remote debugging port
 runner.port;
-
 // kill this chrome
 await runner.kill();
 ```
 
-#### support options
-- port: {number} launch chrome listen on debug port, default will random a free port to use
-- chromePath: {string} chrome executable full path, default will automatic find a path according to your system. If no executable chrome find, will use env CHROME_PATH as executable full path. If all of the above way can't get a path a Error('no chrome installations found') will throw
-- chromeFlags: {Array<string>} flags pass to chrome when start chrome, all flags can be find [here](http://peter.sh/experiments/chromium-command-line-switches/)
+#### launch options
+`launch()` method can pass options by `launch({})`, support:
+- `port`: {number} launch chrome listen on debug port, default will random a free port to use
+- `chromePath`: {string} chrome executable full path, default will automatic find a path according to your system. If no executable chrome find, will use env CHROME_PATH as executable full path. If all of the above way can't get a path a Error('no chrome installations found') will throw
+- `chromeFlags`: {Array<string>} flags pass to chrome when start chrome, all flags can be find [here](http://peter.sh/experiments/chromium-command-line-switches/)
 
 #### runner API
-- runner.port: get chrome remove debug port
-- runner.kill(): kill chrome and release all resource and remove temp files
+- `runner.port`: get chrome remove debug port
+- `runner.kill()`: kill chrome and release all resource and remove temp files
 
 after chrome-runner launch chrome, a dir hold chrome out log and pid file will be create, this dir path will be out in console.
 
