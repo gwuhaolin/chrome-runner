@@ -1,6 +1,6 @@
 'use strict';
 const assert = require('assert');
-const { delay } = require('../util');
+const { delay } = require('../lib/util');
 const { launch, launchWithoutNoise, launchWithHeadless } = require('../index');
 
 process.on('unhandledRejection', console.trace);

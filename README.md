@@ -38,7 +38,7 @@ await runner.kill();
 after chrome-runner launch chrome, a dir hold chrome out log and pid file will be create, this dir path will be out in console.
 
 ## launchWithoutNoise
-`launchWithoutNoise` same with `launch` but [disables many chrome services](https://github.com/gwuhaolin/chrome-runner/blob/master/flags.js) that add noise to automated scenarios.
+`launchWithoutNoise` same with `launch` but [disables many chrome services](https://github.com/gwuhaolin/chrome-runner/blob/master/lib/flags.js) that add noise to automated scenarios.
 
 ## launchWithHeadless
 `launchWithHeadless` same with `launch` but [run chrome in headless mode](https://developers.google.com/web/updates/2017/04/headless-chrome) and without noise.

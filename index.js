@@ -1,5 +1,5 @@
-const { NOISE_FLAGS } = require('./flags');
-const Runner = require('./runner');
+const { NOISE_FLAGS } = require('./lib/flags');
+const Runner = require('./lib/runner');
 
 async function launch(runnerOptions = {}) {
   const runner = new Runner(runnerOptions);

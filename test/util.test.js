@@ -1,6 +1,6 @@
 'use strict';
 const assert = require('assert');
-const { getRandomPort } = require('../util');
+const { getRandomPort } = require('../lib/util');
 
 describe('util', () => {
 
