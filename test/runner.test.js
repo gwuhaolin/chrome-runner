@@ -7,6 +7,7 @@ const { launch, launchWithoutNoise, launchWithHeadless } = require('../index');
 process.on('unhandledRejection', console.trace);
 
 describe('Runner', function () {
+  this.timeout(5000);
 
   it('set and get port', async function () {
     this.timeout(10000);
