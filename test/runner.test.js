@@ -1,5 +1,6 @@
 'use strict';
 const assert = require('assert');
+const fs = require('fs');
 const { delay } = require('../lib/util');
 const { launch, launchWithoutNoise, launchWithHeadless } = require('../index');
 
@@ -8,6 +9,7 @@ process.on('unhandledRejection', console.trace);
 describe('Runner', function () {
 
   it('set and get port', async function () {
+    this.timeout(10000);
     const runner = await launchWithHeadless({
       port: 4577,
     });
@@ -20,6 +22,14 @@ describe('Runner', function () {
     const runner = await launch();
     assert.notEqual(runner.chromeProcess, null);
     return await runner.kill();
+  });
+
+  it('after kill() all tmp file should be removed', async function () {
+    const runner = await launch();
+    const chromeDataDir = runner.chromeDataDir;
+    assert.notEqual(runner.chromeProcess, null);
+    await runner.kill();
+    assert.equal(fs.existsSync(chromeDataDir), false, `tmp dir ${chromeDataDir} should be removed`);
   });
 
   it.skip('launchWithoutNoise() then kill()', async function () {

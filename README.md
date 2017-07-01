@@ -1,5 +1,6 @@
 [![Npm Package](https://img.shields.io/npm/v/chrome-runner.svg?style=flat-square)](https://www.npmjs.com/package/chrome-runner)
 [![Build Status](https://img.shields.io/travis/gwuhaolin/chrome-runner.svg?style=flat-square)](https://travis-ci.org/gwuhaolin/chrome-runner)
+[![Build Status](https://img.shields.io/appveyor/ci/gwuhaolin/chrome-runner.svg?style=flat-square)](https://ci.appveyor.com/project/gwuhaolin/chrome-runner)
 [![Dependency Status](https://david-dm.org/gwuhaolin/chrome-runner.svg?style=flat-square)](https://npmjs.org/package/chrome-runner)
 [![Npm Downloads](http://img.shields.io/npm/dm/chrome-runner.svg?style=flat-square)](https://www.npmjs.com/package/chrome-runner)
 
@@ -11,7 +12,6 @@ Run chrome with ease from node.
 - Opens up the browser's `remote-debugging-port` on an available port
 - Automatic locates a Chrome binary to launch
 - Uses a fresh Chrome profile for each launch, and cleans itself up on `kill()`
-- Binds `Ctrl-C` to terminate the Chrome process
 
 ## Use
 ```js
