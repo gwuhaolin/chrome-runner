@@ -1,7 +1,6 @@
 'use strict';
 const assert = require('assert');
 const fs = require('fs');
-const rimraf = require('rimraf');
 const { getRandomPort, isPortOpen, makeTmpDir } = require('../lib/util');
 
 describe('util', () => {
