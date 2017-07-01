@@ -49,4 +49,12 @@ describe('Runner', function () {
     await runner.kill();
   });
 
+  it('set logger option', async function () {
+    const runner = await launchWithHeadless({
+      logger: console
+    });
+    await runner.launch();
+    await runner.kill();
+  });
+
 });
