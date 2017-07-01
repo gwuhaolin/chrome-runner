@@ -19,6 +19,6 @@ describe('util', () => {
   it('makeTmpDir', () => {
     const tmpDirPath = makeTmpDir();
     fs.accessSync(tmpDirPath, fs.constants.W_OK);
-    rimraf.sync(tmpDirPath);
+    fs.rmdirSync(tmpDirPath);
   });
 });
