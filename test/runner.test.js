@@ -26,7 +26,7 @@ describe('Runner', function () {
   });
 
   it('after kill() all tmp file should be removed', async function () {
-    const runner = await launch();
+    const runner = await launchWithHeadless();
     const chromeDataDir = runner.chromeDataDir;
     assert.notEqual(runner.chromeProcess, null);
     await runner.kill();
