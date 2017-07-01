@@ -1,7 +1,7 @@
 'use strict';
 const assert = require('assert');
 const fs = require('fs');
-const { getRandomPort, isPortOpen, makeTmpDir } = require('../lib/util');
+const { getRandomPort, isPortOpen, makeTmpDir, rmDir } = require('../lib/util');
 
 describe('util', () => {
 
@@ -18,6 +18,7 @@ describe('util', () => {
   it('makeTmpDir', () => {
     const tmpDirPath = makeTmpDir();
     fs.accessSync(tmpDirPath, fs.constants.W_OK);
-    fs.rmdirSync(tmpDirPath);
+    rmDir(tmpDirPath);
+    assert.equal(fs.existsSync(tmpDirPath), false);
   });
 });
