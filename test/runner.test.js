@@ -104,12 +104,12 @@ describe('Runner', function () {
 
   it('should emit chromeAlive event then chromeRestarted event when chrome exit unexpected', function (done) {
     launchWithHeadless().then((runner) => {
-      let chromeUnexpectedExited;
-      runner.once('chromeUnexpectedExited', async () => {
-        chromeUnexpectedExited = true;
+      let chromeDead;
+      runner.once('chromeDead', async () => {
+        chromeDead = true;
       });
       runner.once('chromeRestarted', async () => {
-        if (chromeUnexpectedExited) {
+        if (chromeDead) {
           await runner.kill();
           done();
         }

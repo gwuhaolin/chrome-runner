@@ -42,8 +42,8 @@ await runner.kill();
 
 #### Events
 a Runner will emit some events in it's lifecycle:
-- `chromeAlive(port)`: when monitor got chrome is alive
-- `chromeUnexpectedExited(code, signal)`: after monitor got chrome is not alive
+- `chromeAlive(port)`: when monitor detect chrome is alive
+- `chromeDead(code, signal)`: after monitor detect chrome is not alive
 - `chromeRestarted()`: after chrome unexpected exited then runner restart it
 - `chromeDataDirPrepared(chromeDataDir)`: after runner create data dir for chrome
 - `chromeDataDirRemoved(chromeDataDir)`: after remove successful create data dir for chrome
