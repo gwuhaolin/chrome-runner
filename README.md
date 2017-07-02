@@ -34,6 +34,7 @@ await runner.kill();
 - `startupPage`: {string} open page when chrome start, default is `about:blank`
 - `shouldRestartChrome`: {boole} logger to handle log from chrome-runner, interface like console, default use console
 - `monitorInterval`: {number} in ms, monitor chrome is alive interval, default is 500ms
+- `chromeDataDir`: {string} chrome data dir, default will create one in system tmp
 
 #### Runner API
 - `runner.port`: get chrome remove debug port

@@ -26,9 +26,13 @@ interface RunnerOptions {
    * in ms, monitor chrome is alive interval, default is 500ms
    */
   monitorInterval?: number,
+  /**
+   * chrome data dir, default will create one in system tmp
+   */
+  chromeDataDir?: string,
 }
 
-class Runner<RunnerOptions> extends EventEmitter {
+export class Runner<RunnerOptions> extends EventEmitter {
   port: number;
   flags: [string];
   chromeProcess: ChildProcess;

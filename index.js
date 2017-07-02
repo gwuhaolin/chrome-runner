@@ -28,6 +28,7 @@ async function launchWithHeadless(runnerOptions = {}) {
 }
 
 module.exports = {
+  Runner,
   launch,
   launchWithoutNoise,
   launchWithHeadless

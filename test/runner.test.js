@@ -1,7 +1,8 @@
 'use strict';
 const assert = require('assert');
+const path = require('path');
 const fs = require('fs');
-const { launch, launchWithoutNoise, launchWithHeadless } = require('../index');
+const { Runner, launch, launchWithoutNoise, launchWithHeadless } = require('../index');
 
 process.on('unhandledRejection', console.trace);
 
@@ -22,6 +23,15 @@ describe('Runner', function () {
     return await runner.kill();
   });
 
+  it('use Runner to launch() then kill() and ensure chromeDataDirPrepared event emit', async function () {
+    const runner = new Runner({
+      chromeFlags: ['--headless', '--disable-gpu']
+    });
+    runner.once('chromeDataDirPrepared', console.log);
+    await runner.launch();
+    return await runner.kill();
+  });
+
   it.skip('launch() then kill()', async function () {
     const runner = await launch();
     assert.notEqual(runner.chromeProcess, null);
@@ -39,6 +49,15 @@ describe('Runner', function () {
     const runner = await launchWithHeadless();
     assert.notEqual(runner.chromeProcess, null);
     assert.notEqual(runner.port, null);
+    return await runner.kill();
+  });
+
+  it('set chromeDataDir option', async function () {
+    const chromeDataDir = path.resolve(__dirname, '../chrome_runner_test');
+    const runner = await launchWithHeadless({
+      chromeDataDir,
+    });
+    assert.equal(runner.chromeDataDir, chromeDataDir);
     return await runner.kill();
   });
 
