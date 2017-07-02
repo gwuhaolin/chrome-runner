@@ -25,7 +25,7 @@ runner.port;
 await runner.kill();
 ```
 
-#### Launch options
+#### Options
 `launch()` method can pass options by `launch({})`, support:
 - `port`: {number} launch chrome listen on debug port, default will random a free port to use
 - `chromePath`: {string} chrome executable full path, default will automatic find a path according to your system. If no executable chrome find, will use env CHROME_PATH as executable full path. If all of the above way can't get a path a Error('no chrome installations found') will throw
@@ -56,6 +56,8 @@ after chrome-runner launch chrome, a dir hold chrome out log and pid file will b
 #### launchWithHeadless
 `launchWithHeadless` same with `launch` but [run chrome in headless mode](https://developers.google.com/web/updates/2017/04/headless-chrome) and without noise.
 
+**more use case see [unit test](./test/runner.test.js)**
+
 ## Install chrome on linux server
 chrome-runner required chrome installed on your system, it easy to install on OSX and Windows, Linux server see [How to install Chrome browser properly via command line?](https://askubuntu.com/questions/79280/how-to-install-chrome-browser-properly-via-command-line)
 
@@ -65,5 +67,3 @@ chrome-runner has been used in many project, e.g:
 - [chrome-pool](https://github.com/gwuhaolin/chrome-pool) headless chrome tabs manage pool
 - [koa-seo](https://github.com/gwuhaolin/koa-seo) SEO middleware for koa base on chrome-render, a substitute for prerender
 - [chrome-tester](https://github.com/gwuhaolin/chrome-tester) web page automatic tester
-
-more use case see [unit test](./test/runner.test.js)
