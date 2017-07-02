@@ -25,7 +25,7 @@ runner.port;
 await runner.kill();
 ```
 
-#### Options
+### Options
 `launch()` method can pass options by `launch({name:value})`. Include:
 - `port`: {number} launch chrome listen on debug port, default will random a free port to use
 - `chromePath`: {string} chrome executable full path, default will automatic find a path according to your system. If no executable chrome find, will use env CHROME_PATH as executable full path. If all of the above way can't get a path a Error('no chrome installations found') will throw
@@ -36,7 +36,7 @@ await runner.kill();
 - `monitorInterval`: {number} in ms, monitor chrome is alive interval, default is 500ms
 - `chromeDataDir`: {string} chrome data dir, default will create one in system tmp
 
-#### Runner API
+### Runner API
 - `runner.port`: get chrome remove debug port
 - `runner.kill()`: kill chrome and release all resource and remove temp files
 
@@ -48,15 +48,15 @@ Runner extends EventEmitter, it will emit some events in it's lifecycle, Include
 - `chromeDataDirPrepared(chromeDataDir)`: after runner create data dir for chrome
 - `chromeDataDirRemoved(chromeDataDir)`: after remove successful create data dir for chrome
 
-#### launchWithoutNoise
+### launchWithoutNoise
 `launchWithoutNoise` same with `launch` but [disables many chrome services](https://github.com/gwuhaolin/chrome-runner/blob/master/lib/flags.js) that add noise to automated scenarios.
 
-#### launchWithHeadless
+### launchWithHeadless
 `launchWithHeadless` same with `launch` but [run chrome in headless mode](https://developers.google.com/web/updates/2017/04/headless-chrome) and without noise.
 
 **more use case see [unit test](./test/runner.test.js), API detail see [d.ts](./index.d.ts)**
 
-#### Chrome log files
+### Chrome log files
 After chrome launched, chrome's log and pid file will be pipe to file in `chromeDataDir`, Include:
 - `chrome-out.log` chrome info log
 - `chrome-err.log` chrome error log
