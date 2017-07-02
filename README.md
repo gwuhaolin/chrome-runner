@@ -12,6 +12,7 @@ Run chrome with ease from node.
 - Opens up the browser's `remote-debugging-port` on an available port
 - Automatic locates a Chrome binary to launch
 - Uses a fresh Chrome profile for each launch, and cleans itself up on `kill()`
+- Support typescript
 
 ## Use
 ```js
