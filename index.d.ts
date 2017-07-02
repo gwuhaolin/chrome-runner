@@ -43,5 +43,5 @@ class Runner<RunnerOptions> extends EventEmitter {
 }
 
 export function launch(opts: RunnerOptions): Promise<Runner>;
-export async function launchWithoutNoise(opts: RunnerOptions): Promise<Runner>;
-export async function launchWithHeadless(opts: RunnerOptions): Promise<Runner>;
+export function launchWithoutNoise(opts: RunnerOptions): Promise<Runner>;
+export function launchWithHeadless(opts: RunnerOptions): Promise<Runner>;

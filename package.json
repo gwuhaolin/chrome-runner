@@ -1,6 +1,6 @@
 {
   "name": "chrome-runner",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "headless chrome runner launcher",
   "keywords": [
     "headless",

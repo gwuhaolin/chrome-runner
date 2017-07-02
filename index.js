@@ -1,4 +1,4 @@
-const { NOISE_FLAGS } = require('./lib/flags');
+const { NOISE_FLAGS, HEADLESS_FLAGS } = require('./lib/flags');
 const Runner = require('./lib/runner');
 
 async function launch(runnerOptions = {}) {
@@ -12,26 +12,19 @@ async function launchWithoutNoise(runnerOptions = {}) {
   if (Array.isArray(runnerOptions.chromeFlags)) {
     chromeFlags = chromeFlags.concat(runnerOptions.chromeFlags);
   }
-  const runner = new Runner(Object.assign({
+  return launch(Object.assign(runnerOptions, {
     chromeFlags,
-  }, runnerOptions));
-  await runner.launch();
-  return runner;
+  }));
 }
 
 async function launchWithHeadless(runnerOptions = {}) {
-  let chromeFlags = NOISE_FLAGS.concat([
-    '--headless',
-    '--disable-gpu'
-  ]);
+  let chromeFlags = NOISE_FLAGS.concat(HEADLESS_FLAGS);
   if (Array.isArray(runnerOptions.chromeFlags)) {
     chromeFlags = chromeFlags.concat(runnerOptions.chromeFlags);
   }
-  const runner = new Runner(Object.assign({
+  return launch(Object.assign(runnerOptions, {
     chromeFlags,
-  }, runnerOptions));
-  await runner.launch();
-  return runner;
+  }));
 }
 
 module.exports = {
