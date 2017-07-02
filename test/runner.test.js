@@ -1,10 +1,13 @@
 'use strict';
 const assert = require('assert');
 const fs = require('fs');
-const { delay } = require('../lib/util');
 const { launch, launchWithoutNoise, launchWithHeadless } = require('../index');
 
 process.on('unhandledRejection', console.trace);
+
+async function delay(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
 
 describe('Runner', function () {
   this.timeout(5000);
@@ -50,7 +53,6 @@ describe('Runner', function () {
   it('restart chrome when chrome exit unexpected', async function () {
     this.timeout(8000);
     const runner = await launchWithHeadless();
-    await runner.launch();
     process.kill(runner.chromeProcess.pid);
     await delay(2000);
     process.kill(runner.chromeProcess.pid);
@@ -60,12 +62,43 @@ describe('Runner', function () {
     await runner.kill();
   });
 
-  it('set logger option', async function () {
-    const runner = await launchWithHeadless({
-      logger: console
+  it('emit chromeDataDirRemoved after kill', function (done) {
+    launchWithHeadless().then(async (runner) => {
+      runner.once('chromeDataDirRemoved', done);
+      await runner.kill();
     });
-    await runner.launch();
-    await runner.kill();
+  });
+
+  it('should emit chromeAlive event then chromeRestarted event when chrome exit unexpected', function (done) {
+    launchWithHeadless().then((runner) => {
+      let chromeUnexpectedExited;
+      runner.once('chromeUnexpectedExited', async () => {
+        chromeUnexpectedExited = true;
+      });
+      runner.once('chromeRestarted', async () => {
+        if (chromeUnexpectedExited) {
+          await runner.kill();
+          done();
+        }
+      });
+      process.kill(runner.chromeProcess.pid);
+    });
+  });
+
+  it('set monitorInterval should emit chromeAlive event interval', function (done) {
+    this.timeout(7000);
+    launchWithHeadless({
+      monitorInterval: 1000,
+    }).then((runner) => {
+      let times = 0;
+      runner.on('chromeAlive', async () => {
+        times++;
+        if (times >= 5) {
+          await runner.kill();
+          done();
+        }
+      });
+    });
   });
 
 });

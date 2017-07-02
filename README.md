@@ -24,18 +24,28 @@ runner.port;
 await runner.kill();
 ```
 
-#### launch options
+#### Launch options
 `launch()` method can pass options by `launch({})`, support:
 - `port`: {number} launch chrome listen on debug port, default will random a free port to use
 - `chromePath`: {string} chrome executable full path, default will automatic find a path according to your system. If no executable chrome find, will use env CHROME_PATH as executable full path. If all of the above way can't get a path a Error('no chrome installations found') will throw
 - `chromeFlags`: {Array<string>} flags pass to chrome when start chrome, all flags can be find [here](http://peter.sh/experiments/chromium-command-line-switches/)
 - `startupPage`: {string} open page when chrome start, default is `about:blank`
 - `startupPage`: {string} open page when chrome start, default is `about:blank`
-- `logger`: {console} logger to handle log from chrome-runner, interface like console, default use console
+- `shouldRestartChrome`: {boole} logger to handle log from chrome-runner, interface like console, default use console
+- `monitorInterval`: {number} in ms, monitor chrome is alive interval, default is 500ms
 
-#### runner API
+#### Runner API
 - `runner.port`: get chrome remove debug port
 - `runner.kill()`: kill chrome and release all resource and remove temp files
+
+#### Events
+a Runner will emit some events in it's lifecycle:
+- `chromeAlive(port)`: when monitor got chrome is alive
+- `chromeUnexpectedExited(code, signal)`: after monitor got chrome is not alive
+- `chromeRestarted()`: after chrome unexpected exited then runner restart it
+- `chromeDataDirPrepared(chromeDataDir)`: after runner create data dir for chrome
+- `chromeDataDirRemoved(chromeDataDir)`: after remove successful create data dir for chrome
+- `removeChromeDataDirFailed(err)`: after remove failed create data dir for chrome
 
 after chrome-runner launch chrome, a dir hold chrome out log and pid file will be create, this dir path will be out in console.
 
@@ -54,3 +64,5 @@ chrome-runner has been used in many project, e.g:
 - [chrome-pool](https://github.com/gwuhaolin/chrome-pool) headless chrome tabs manage pool
 - [koa-seo](https://github.com/gwuhaolin/koa-seo) SEO middleware for koa base on chrome-render, a substitute for prerender
 - [chrome-tester](https://github.com/gwuhaolin/chrome-tester) web page automatic tester
+
+more use case see [unit test](./test/runner.test.js)

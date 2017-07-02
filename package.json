@@ -1,6 +1,6 @@
 {
   "name": "chrome-runner",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "headless chrome runner launcher",
   "keywords": [
     "headless",
@@ -21,6 +21,7 @@
     "node": ">= 7.0.0"
   },
   "dependencies": {
+    "@types/node": "^8.0.7",
     "chrome-finder": "^1.0.0",
     "rimraf": "^2.6.1"
   },
