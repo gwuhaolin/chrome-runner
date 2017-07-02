@@ -48,19 +48,19 @@ Runner extends EventEmitter, it will emit some events in it's lifecycle, Include
 - `chromeDataDirPrepared(chromeDataDir)`: after runner create data dir for chrome
 - `chromeDataDirRemoved(chromeDataDir)`: after remove successful create data dir for chrome
 
-After chrome launched, chrome's log and pid file will be pipe to file in `chromeDataDir`, Include:
-- `chrome-out.log` chrome info log
-- `chrome-err.log` chrome error log
-- `chrome.pid` chrome pid file
-
 #### launchWithoutNoise
 `launchWithoutNoise` same with `launch` but [disables many chrome services](https://github.com/gwuhaolin/chrome-runner/blob/master/lib/flags.js) that add noise to automated scenarios.
 
 #### launchWithHeadless
 `launchWithHeadless` same with `launch` but [run chrome in headless mode](https://developers.google.com/web/updates/2017/04/headless-chrome) and without noise.
 
-**more use case see [unit test](./test/runner.test.js)**
-**API detail see [d.ts](./index.d.ts)**
+**more use case see [unit test](./test/runner.test.js), API detail see [d.ts](./index.d.ts)**
+
+#### Chrome log files
+After chrome launched, chrome's log and pid file will be pipe to file in `chromeDataDir`, Include:
+- `chrome-out.log` chrome info log
+- `chrome-err.log` chrome error log
+- `chrome.pid` chrome pid file
 
 ## Install chrome on linux server
 chrome-runner required chrome installed on your system, it easy to install on OSX and Windows, Linux server see [How to install Chrome browser properly via command line?](https://askubuntu.com/questions/79280/how-to-install-chrome-browser-properly-via-command-line)
