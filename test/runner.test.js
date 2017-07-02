@@ -91,7 +91,10 @@ describe('Runner', function () {
 
       // TODO windows removed tmp dir failed
       if (process.platform !== 'win32') {
-        runner.once('chromeDataDirRemoved', done);
+        runner.once('chromeDataDirRemoved', (chromeDataDir) => {
+          console.log(chromeDataDir);
+          done();
+        });
       } else {
         done();
       }
