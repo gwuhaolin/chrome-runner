@@ -46,7 +46,6 @@ a Runner will emit some events in it's lifecycle:
 - `chromeRestarted()`: after chrome unexpected exited then runner restart it
 - `chromeDataDirPrepared(chromeDataDir)`: after runner create data dir for chrome
 - `chromeDataDirRemoved(chromeDataDir)`: after remove successful create data dir for chrome
-- `removeChromeDataDirFailed(err)`: after remove failed create data dir for chrome
 
 after chrome-runner launch chrome, a dir hold chrome out log and pid file will be create, this dir path will be out in console.
 

@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@types/node": "^8.0.7",
-    "chrome-finder": "^1.0.0",
+    "chrome-finder": "^1.0.1",
     "rimraf": "^2.6.1"
   },
   "devDependencies": {
