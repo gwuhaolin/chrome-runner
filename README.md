@@ -31,7 +31,6 @@ await runner.kill();
 - `chromePath`: {string} chrome executable full path, default will automatic find a path according to your system. If no executable chrome find, will use env CHROME_PATH as executable full path. If all of the above way can't get a path a Error('no chrome installations found') will throw
 - `chromeFlags`: {Array<string>} flags pass to chrome when start chrome, all flags can be find [here](http://peter.sh/experiments/chromium-command-line-switches/)
 - `startupPage`: {string} open page when chrome start, default is `about:blank`
-- `startupPage`: {string} open page when chrome start, default is `about:blank`
 - `shouldRestartChrome`: {boole} logger to handle log from chrome-runner, interface like console, default use console
 - `monitorInterval`: {number} in ms, monitor chrome is alive interval, default is 500ms
 - `chromeDataDir`: {string} chrome data dir, default will create one in system tmp
