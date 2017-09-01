@@ -32,7 +32,7 @@ interface RunnerOptions {
   chromeDataDir?: string,
 }
 
-export class Runner<RunnerOptions> extends EventEmitter {
+export class Runner extends EventEmitter {
   port: number;
   flags: [string];
   chromeProcess: ChildProcess;
@@ -43,7 +43,7 @@ export class Runner<RunnerOptions> extends EventEmitter {
 
   launch(): Promise<Runner>;
 
-  kill(): Promise;
+  kill(): Promise<void>;
 }
 
 export function launch(opts: RunnerOptions): Promise<Runner>;
