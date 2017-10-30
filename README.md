@@ -14,6 +14,10 @@ Run chrome with ease from node.
 - Uses a fresh Chrome profile for each launch, and cleans itself up on `kill()`
 - Support typescript
 
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/3bvxELAxnq8r4wheFyRkED8U/gwuhaolin/chrome-runner'>
+  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/3bvxELAxnq8r4wheFyRkED8U/gwuhaolin/chrome-runner.svg' />
+</a>
+
 ## Use
 ```js
 const {Runner,launch,launchWithoutNoise,launchWithHeadless} = require('chrome-runner');
