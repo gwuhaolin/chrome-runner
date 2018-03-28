@@ -134,7 +134,7 @@ describe('Runner', function () {
     });
   });
 
-  it.only('set disableLogging option', async function () {
+  it('set disableLogging option', async function () {
     const runner = await launchWithHeadless({
       disableLogging: true,
     });
