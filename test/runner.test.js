@@ -134,4 +134,13 @@ describe('Runner', function () {
     });
   });
 
+  it.only('set disableLogging option', async function () {
+    const runner = await launchWithHeadless({
+      disableLogging: true,
+    });
+    assert.equal(fs.existsSync(path.join(runner.chromeDataDir, 'chrome-err.log')), false);
+    assert.equal(fs.existsSync(path.join(runner.chromeDataDir, 'chrome-out.log')), false);
+    return await runner.kill();
+  });
+
 });

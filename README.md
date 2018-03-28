@@ -4,7 +4,7 @@
 [![Dependency Status](https://david-dm.org/gwuhaolin/chrome-runner.svg?style=flat-square)](https://npmjs.org/package/chrome-runner)
 [![Npm Downloads](http://img.shields.io/npm/dm/chrome-runner.svg?style=flat-square)](https://www.npmjs.com/package/chrome-runner)
 
-# chrome-runner 
+# chrome-runner
 Run chrome with ease from node.
 
 - Support OSX Linux Windows system
@@ -34,6 +34,7 @@ await runner.kill();
 - `shouldRestartChrome`: {boole} logger to handle log from chrome-runner, interface like console, default use console
 - `monitorInterval`: {number} in ms, monitor chrome is alive interval, default is 500ms
 - `chromeDataDir`: {string} chrome data dir, default will create one in system tmp
+- `disableLogging`: {boolean} Controls if Chome stdout and stderr is logged to file, default is `true`.
 
 ### Runner API
 - `runner.port`: get chrome remove debug port
